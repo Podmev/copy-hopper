@@ -166,7 +166,7 @@ Main piece of system. Users write articles for companies.
 
 ### Payments
 
-Tracks payments from companies for texts.
+Tracks payments from companies for texts. Manual tracking initially.
 
 #### Fields
 
@@ -188,6 +188,11 @@ Tracks payments from companies for texts.
 
 - Index on `company_id`.
 - Index on `paid_at`.
+
+#### Potential Integrations
+
+- Stripe and PayPal integrations may be added later.
+- Adopt automation when manual tracking proves stable, transaction volume increases, and security/compliance requirements are satisfied.
 
 ### Payment Schedule
 
