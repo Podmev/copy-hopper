@@ -624,6 +624,24 @@ Splitting into dedicated microservices will be considered when:
 - Amazon RDS offers managed PostgreSQL hosting with automated backups and scaling options.
 - Team members have prior experience with PostgreSQL and Flyway, reducing onboarding time.
 
+## Localization
+
+### Launch Languages
+
+- English (en)
+- Spanish (es)
+- German (de)
+- French (fr)
+
+### Internationalization Framework
+
+- React Intl on the frontend.
+- Spring message sources on the backend.
+
+### Fallback Strategy
+
+If a user's preferred language is unsupported or a translation is missing, the application defaults to English.
+
 ## Features
 
 1. Registring and tracking workflow of articles from different companies while working basicly as a freelancer
