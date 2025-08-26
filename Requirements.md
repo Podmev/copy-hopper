@@ -561,13 +561,31 @@ erDiagram
 
 ## Architecture
 
-1. SQL Database (still need to choose which one)
+1. PostgreSQL database with Flyway migrations
 2. Backend Java/Spring
 3. Frontend React/TypeScript
 4. App (android/IOS) for later
 5. DB, backend and frontend are in cloud (AWS)
 6. Maybe backend should be several services - still need to plan
 7. Extra Frontend for each user with different personal domain and design with just portfolio
+
+### Database
+
+#### Backup and Restore
+
+- Automated daily snapshots using Amazon RDS with point-in-time recovery.
+- Before major schema changes, trigger manual backups and verify restore procedures.
+
+#### Schema Management
+
+- Manage schema versions with Flyway migrations stored in version control.
+- Apply migrations automatically during deployment to keep environments synchronized.
+
+#### Rationale
+
+- PostgreSQL provides strong SQL compliance, JSON support, and mature ecosystem.
+- Amazon RDS offers managed PostgreSQL hosting with automated backups and scaling options.
+- Team members have prior experience with PostgreSQL and Flyway, reducing onboarding time.
 
 ## Features
 
