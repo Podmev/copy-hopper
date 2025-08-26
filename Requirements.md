@@ -569,6 +569,21 @@ erDiagram
 6. Maybe backend should be several services - still need to plan
 7. Extra Frontend for each user with different personal domain and design with just portfolio
 
+### Authentication and Authorization
+
+- OAuth2 with JWT tokens for stateless sessions.
+- User roles:
+  - **User:** manages personal articles, messages, and relations.
+  - **Company Manager:** oversees company articles and payments.
+  - **Admin:** full platform access and management.
+- External identity providers: Google and GitHub OAuth.
+- Password policy: minimum 12 characters with upper/lowercase letters, number, and symbol.
+- Authorization enforced on:
+  - Article endpoints (`/api/articles/**`)
+  - Payment endpoints (`/api/payments/**`)
+  - Chat endpoints (`/api/chats/**` and `/api/messages/**`)
+  - Admin module (`/api/admin/**`)
+
 ### Database
 
 #### Backup and Restore
