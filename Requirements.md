@@ -644,3 +644,12 @@ Splitting into dedicated microservices will be considered when:
 16. Invite for friends with any social media or link
 17. Search for existing people and set relations
 18. Real-time chat and notifications via Spring WebSockets with email/polling fallback, 180-day message retention, and moderation tools
+
+## Extension Points
+
+The following integrations are planned for future releases:
+
+- SEO tools
+- Grammar and style checkers
+
+Detailed integration planning for these extensions will occur after the MVP launch.
