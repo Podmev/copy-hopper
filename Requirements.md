@@ -583,7 +583,7 @@ erDiagram
 1. PostgreSQL database with Flyway migrations
 2. Backend Java/Spring
 3. Frontend React/TypeScript
-4. App (android/IOS) for later
+4. Mobile clients (Android/iOS) must support all web features; evaluate cross-platform toolkits (e.g., React Native) and native app options.
 5. DB, backend and frontend are in cloud (AWS)
 6. Backend starts as a modular monolith with clear module boundaries
    to simplify initial development and deployment.
