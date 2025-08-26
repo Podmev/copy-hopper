@@ -587,7 +587,26 @@ erDiagram
 5. DB, backend and frontend are in cloud (AWS)
 6. Backend starts as a modular monolith with clear module boundaries
    to simplify initial development and deployment.
-7. Extra Frontend for each user with different personal domain and design with just portfolio
+7. Extra Frontend for each user with optional custom domain and design with just portfolio
+
+### Custom Portfolio Domains
+
+Certain subscription tiers can map a personal domain to their portfolio site.
+
+#### Onboarding Flow
+
+1. User submits a desired domain in account settings.
+2. Platform supplies DNS records for verification (TXT or CNAME).
+3. User updates DNS and triggers verification.
+4. Verified domain is bound to the user's portfolio data.
+
+#### Public API Authorization
+
+Portfolio requests from custom domains are validated with a signed token in a dedicated header. Referrer or Host headers are also checked to ensure the request originates from the mapped domain.
+
+#### Limits and Pricing
+
+Custom domains are a premium feature. The premium tier includes one domain per account; additional domains or usage require higher tiers or add-on fees.
 
 ### Service Approach
 
