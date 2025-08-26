@@ -15,6 +15,20 @@ User registers account, after this he has the right to add info about current, f
 
 - First version "Copy hopper"
 
+## User Types
+
+### Current Users
+
+Individual copywriters who manage their own tasks and portfolios.
+
+### Planned Support for Agencies
+
+Agency accounts will coordinate multiple copywriters, delegating and tracking team assignments.
+
+### Long-Term Roadmap for Client Accounts
+
+Clients will eventually be able to register accounts, post tasks directly, and monitor progress through the platform.
+
 ## Entities
 
 Main entities in DB:
