@@ -565,8 +565,8 @@ erDiagram
 2. Backend Java/Spring
 3. Frontend React/TypeScript
 4. App (android/IOS) for later
-5. DB, backend and frontend are in cloud (AWS, initial deployment in `us-east-1`)
-6. Target under 100 ms round-trip latency for users in North America; add regions in EU and APAC as the platform grows
+5. DB, backend and frontend are in cloud (AWS, initial deployment in `eu-west-1` (Ireland))
+6. Target under 100 ms round-trip latency for users in Western Europe; add regions in North America and APAC as the platform grows
 7. Backend starts as a modular monolith with clear module boundaries
    to simplify initial development and deployment.
 8. Extra Frontend for each user with different personal domain and design with just portfolio
