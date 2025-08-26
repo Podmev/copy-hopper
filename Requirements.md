@@ -566,8 +566,23 @@ erDiagram
 3. Frontend React/TypeScript
 4. App (android/IOS) for later
 5. DB, backend and frontend are in cloud (AWS)
-6. Maybe backend should be several services - still need to plan
+6. Backend starts as a modular monolith with clear module boundaries
+   to simplify initial development and deployment.
 7. Extra Frontend for each user with different personal domain and design with just portfolio
+
+### Service Approach
+
+The backend is delivered as a single monolithic application with internal modules for:
+
+- **Payments**
+- **Articles**
+- **Messaging**
+
+Splitting into dedicated microservices will be considered when:
+
+- A module requires independent scaling or specialized infrastructure.
+- Separate teams can own modules autonomously.
+- Release cycles diverge enough to benefit from isolated deployment.
 
 ### Authentication and Authorization
 
