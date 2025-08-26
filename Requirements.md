@@ -15,6 +15,20 @@ User registers account, after this he has the right to add info about current, f
 
 - First version "Copy hopper"
 
+## User Types
+
+### Current Users
+
+Individual copywriters who manage their own tasks and portfolios.
+
+### Planned Support for Agencies
+
+Agency accounts will coordinate multiple copywriters, delegating and tracking team assignments.
+
+### Long-Term Roadmap for Client Accounts
+
+Clients will eventually be able to register accounts, post tasks directly, and monitor progress through the platform.
+
 ## Entities
 
 Main entities in DB:
@@ -166,7 +180,7 @@ Main piece of system. Users write articles for companies.
 
 ### Payments
 
-Tracks payments from companies for texts.
+Tracks payments from companies for texts. Manual tracking initially.
 
 #### Fields
 
@@ -188,6 +202,11 @@ Tracks payments from companies for texts.
 
 - Index on `company_id`.
 - Index on `paid_at`.
+
+#### Potential Integrations
+
+- Stripe and PayPal integrations may be added later.
+- Adopt automation when manual tracking proves stable, transaction volume increases, and security/compliance requirements are satisfied.
 
 ### Payment Schedule
 
@@ -564,11 +583,10 @@ erDiagram
 1. PostgreSQL database with Flyway migrations
 2. Backend Java/Spring
 3. Frontend React/TypeScript
-4. App (android/IOS) for later
+4. Mobile clients (Android/iOS) must support all web features; evaluate cross-platform toolkits (e.g., React Native) and native app options.
 5. DB, backend and frontend are in cloud (AWS, initial deployment in `eu-west-1` (Ireland))
 6. Target under 100 ms round-trip latency for users in Western Europe; add regions in North America and APAC as the platform grows
-7. Backend starts as a modular monolith with clear module boundaries
-   to simplify initial development and deployment.
+7. Backend starts as a modular monolith with clear module boundaries to simplify initial development and deployment.
 8. Extra Frontend for each user with different personal domain and design with just portfolio
 
 ### Service Approach
@@ -625,6 +643,20 @@ Splitting into dedicated microservices will be considered when:
 - Amazon RDS offers managed PostgreSQL hosting with automated backups and scaling options.
 - Team members have prior experience with PostgreSQL and Flyway, reducing onboarding time.
 
+### Data Retention
+
+#### Messages
+
+Messages are retained for 180 days to balance storage costs with user privacy needs. Older messages are archived or purged.
+
+#### Payment Records
+
+Payment records are retained for 7 years to support audits, tax obligations, and dispute resolution.
+
+#### Compliance Review
+
+Retention periods will be revisited to ensure alignment with GDPR, CCPA, and similar regulations, including honoring data subject requests.
+
 ## Features
 
 1. Registring and tracking workflow of articles from different companies while working basicly as a freelancer
@@ -645,3 +677,12 @@ Splitting into dedicated microservices will be considered when:
 16. Invite for friends with any social media or link
 17. Search for existing people and set relations
 18. Real-time chat and notifications via Spring WebSockets with email/polling fallback, 180-day message retention, and moderation tools
+
+## Extension Points
+
+The following integrations are planned for future releases:
+
+- SEO tools
+- Grammar and style checkers
+
+Detailed integration planning for these extensions will occur after the MVP launch.
