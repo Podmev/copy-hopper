@@ -15,6 +15,20 @@ User registers account, after this he has the right to add info about current, f
 
 - First version "Copy hopper"
 
+## User Types
+
+### Current Users
+
+Individual copywriters who manage their own tasks and portfolios.
+
+### Planned Support for Agencies
+
+Agency accounts will coordinate multiple copywriters, delegating and tracking team assignments.
+
+### Long-Term Roadmap for Client Accounts
+
+Clients will eventually be able to register accounts, post tasks directly, and monitor progress through the platform.
+
 ## Entities
 
 Main entities in DB:
@@ -166,7 +180,7 @@ Main piece of system. Users write articles for companies.
 
 ### Payments
 
-Tracks payments from companies for texts.
+Tracks payments from companies for texts. Manual tracking initially.
 
 #### Fields
 
@@ -188,6 +202,11 @@ Tracks payments from companies for texts.
 
 - Index on `company_id`.
 - Index on `paid_at`.
+
+#### Potential Integrations
+
+- Stripe and PayPal integrations may be added later.
+- Adopt automation when manual tracking proves stable, transaction volume increases, and security/compliance requirements are satisfied.
 
 ### Payment Schedule
 
@@ -642,6 +661,20 @@ Splitting into dedicated microservices will be considered when:
 
 If a user's preferred language is unsupported or a translation is missing, the application defaults to English.
 
+### Data Retention
+
+#### Messages
+
+Messages are retained for 180 days to balance storage costs with user privacy needs. Older messages are archived or purged.
+
+#### Payment Records
+
+Payment records are retained for 7 years to support audits, tax obligations, and dispute resolution.
+
+#### Compliance Review
+
+Retention periods will be revisited to ensure alignment with GDPR, CCPA, and similar regulations, including honoring data subject requests.
+
 ## Features
 
 1. Registring and tracking workflow of articles from different companies while working basicly as a freelancer
@@ -662,3 +695,12 @@ If a user's preferred language is unsupported or a translation is missing, the a
 16. Invite for friends with any social media or link
 17. Search for existing people and set relations
 18. Real-time chat and notifications via Spring WebSockets with email/polling fallback, 180-day message retention, and moderation tools
+
+## Extension Points
+
+The following integrations are planned for future releases:
+
+- SEO tools
+- Grammar and style checkers
+
+Detailed integration planning for these extensions will occur after the MVP launch.
