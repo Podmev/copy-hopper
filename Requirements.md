@@ -624,6 +624,20 @@ Splitting into dedicated microservices will be considered when:
 - Amazon RDS offers managed PostgreSQL hosting with automated backups and scaling options.
 - Team members have prior experience with PostgreSQL and Flyway, reducing onboarding time.
 
+### Data Retention
+
+#### Messages
+
+Messages are retained for 180 days to balance storage costs with user privacy needs. Older messages are archived or purged.
+
+#### Payment Records
+
+Payment records are retained for 7 years to support audits, tax obligations, and dispute resolution.
+
+#### Compliance Review
+
+Retention periods will be revisited to ensure alignment with GDPR, CCPA, and similar regulations, including honoring data subject requests.
+
 ## Features
 
 1. Registring and tracking workflow of articles from different companies while working basicly as a freelancer
