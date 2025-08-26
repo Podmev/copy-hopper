@@ -599,6 +599,13 @@ Splitting into dedicated microservices will be considered when:
   - Chat endpoints (`/api/chats/**` and `/api/messages/**`)
   - Admin module (`/api/admin/**`)
 
+### Real-Time Messaging and Notifications
+
+- WebSocket endpoints using Spring STOMP deliver chat messages and in-app notifications.
+- If WebSockets are unavailable, clients fall back to HTTP long polling and email notifications (via AWS SES) for offline users.
+- Messages are retained for 180 days; older messages are archived or purged.
+- Automated filters flag abusive content and admins can moderate or remove messages.
+
 ### Database
 
 #### Backup and Restore
@@ -636,3 +643,4 @@ Splitting into dedicated microservices will be considered when:
 15. Chatting with colleages (friends)
 16. Invite for friends with any social media or link
 17. Search for existing people and set relations
+18. Real-time chat and notifications via Spring WebSockets with email/polling fallback, 180-day message retention, and moderation tools
