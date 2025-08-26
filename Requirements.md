@@ -283,9 +283,29 @@ erDiagram
 
 ## Company (any user - think how to do it)
 
-# CRUD
+### Create Company
+- **User actions:** User selects "Add Company" and fills in name, website, logos, and other optional fields, then submits.
+- **System validations and responses:** Validate required fields and ensure the company name is unique. If validation fails, display specific error messages.
+- **Success:** Company record is created and becomes available for selection in article and employment forms. A confirmation notification is shown.
+- **Failure:** Form remains open with validation errors highlighted; duplicate name or missing fields are reported.
 
-1. What to do if there are some articles connected to the company???
+### Read Company
+- **User actions:** User searches or opens a company from the list.
+- **System validations and responses:** Verify the user has permission to view company details, then retrieve data from the database.
+- **Success:** Company information and related statistics are displayed.
+- **Failure:** If the company does not exist or access is denied, an error notification is shown.
+
+### Update Company
+- **User actions:** User edits company details and saves changes.
+- **System validations and responses:** Validate updated fields and ensure the new name remains unique.
+- **Success:** Changes are stored and a success message is displayed.
+- **Failure:** Errors are shown for invalid data or conflicts.
+
+### Delete Company
+- **User actions:** User requests company deletion and confirms the action.
+- **System validations and responses:** Check for associated articles, employments, or payments. If linked records exist, deletion is blocked and the user is prompted to reassign or remove dependencies.
+- **Success:** If no dependencies exist, the company is removed and a confirmation is shown.
+- **Failure:** Warning is displayed explaining why the company cannot be deleted.
 
 ## Employment (by user)
 
@@ -298,35 +318,169 @@ erDiagram
 
 ## Payment (by user)
 
-# Register payment from some company
+### Create Payment
+- **Register payment from some company**
+  - **User actions:** User selects the hiring company, inputs amount, date, and related article, then submits.
+  - **System validations and responses:** Ensure the company exists, amount is positive, article belongs to the user, and all required fields are filled. Display validation errors for any issues.
+  - **Success:** Payment record is saved and linked to the appropriate company and articles. A success notification is shown.
+  - **Failure:** Payment is not saved; errors are displayed.
 
-# Modify payment
+- **Register transfer to contractor**
+  - **User actions:** User selects the contractor, links the payment, enters transfer amount, and submits.
+  - **System validations and responses:** Confirm the contractor is assigned to the article and that the transfer amount does not exceed the remaining payment balance.
+  - **Success:** Transfer is recorded and both parties receive a notification.
+  - **Failure:** Operation is blocked with an explanatory error.
 
-# Register transfer to contractor
+### Read Payment
+- **User actions:** User browses payments list or opens a specific payment.
+- **System validations and responses:** Verify user permissions and fetch payment details.
+- **Success:** Payment data, including associated articles and transfers, is displayed.
+- **Failure:** Notification is shown if payment cannot be found or the user lacks access.
 
-# Modify payment
+### Update Payment
+- **Modify payment**
+  - **User actions:** User edits payment details or adjusts transfer amounts and saves.
+  - **System validations and responses:** Validate changes, ensuring amounts remain consistent with existing transfers.
+  - **Success:** Updated information is saved and a confirmation message appears.
+  - **Failure:** Validation errors are displayed and changes are not persisted.
 
-# CRUD
+### Delete Payment
+- **User actions:** User selects delete on a payment and confirms.
+- **System validations and responses:** Check for associated approved transfers or reports; prevent deletion if such links exist.
+- **Success:** Payment is removed and the user is notified.
+- **Failure:** Deletion is denied with an explanation.
 
 ## Payment Schedule (by user)
 
-# CRUD
+### Create Payment Schedule
+- **User actions:** User selects a company, defines payment periods or milestones, sets amounts and due dates, then saves.
+- **System validations and responses:** Verify company exists, dates are valid, and no overlapping schedule for the same company.
+- **Success:** Schedule is created and reminders are scheduled; success notification is shown.
+- **Failure:** Validation errors displayed; schedule not saved.
+
+### Read Payment Schedule
+- **User actions:** User views list or details of payment schedules.
+- **System validations and responses:** Check permissions; retrieve schedule and related payments.
+- **Success:** Schedule details are displayed with upcoming milestones.
+- **Failure:** Error notification if schedule cannot be accessed.
+
+### Update Payment Schedule
+- **User actions:** User modifies existing schedule entries and saves.
+- **System validations and responses:** Ensure new data does not conflict with issued payments or other schedules.
+- **Success:** Updates stored and confirmation shown.
+- **Failure:** System displays validation messages.
+
+### Delete Payment Schedule
+- **User actions:** User requests deletion of a schedule.
+- **System validations and responses:** Check for linked payments; block if payments exist.
+- **Success:** If no dependencies, schedule is removed and user is notified.
+- **Failure:** Deletion refused with explanation of linked payments.
 
 ## User
 
-# CRUD
+### Create User
+- **User actions:** User registers via Google or a sign-up form providing email and profile details.
+- **System validations and responses:** Verify email format and uniqueness, validate authentication token.
+- **Success:** Account is created and a welcome notification is sent.
+- **Failure:** Registration fails with descriptive errors.
+
+### Read User
+- **User actions:** User views their profile or searches for other users.
+- **System validations and responses:** Check access permissions and retrieve profile data.
+- **Success:** Requested profile information is displayed.
+- **Failure:** Error shown if user not found or access denied.
+
+### Update User
+- **User actions:** User edits profile fields such as name, photo, or languages and submits.
+- **System validations and responses:** Validate inputs and ensure email uniqueness when changed.
+- **Success:** Updated profile is saved and confirmation is displayed.
+- **Failure:** Validation errors prevent saving.
+
+### Delete User
+- **User actions:** User requests account deletion and confirms.
+- **System validations and responses:** Verify user identity and ensure no active articles or employments.
+- **Success:** Account is removed or deactivated; confirmation sent.
+- **Failure:** Deletion blocked with reason provided.
 
 # auth
 
 ## messages (by user)
 
-# CRUD for chat
+### Chat Lifecycle
+#### Create Chat
+- **User actions:** User starts a new chat from an article or by selecting participants and sends an initial message.
+- **System validations and responses:** Verify participants exist and user has rights to create the chat; prevent duplicate chats for the same article and participants.
+- **Success:** Chat room is created and participants receive notifications.
+- **Failure:** Error message indicates missing permissions or validation issues.
 
-# CRUD for messages
+#### Read Chat
+- **User actions:** User opens chat list or selects a chat to view.
+- **System validations and responses:** Confirm user is a participant and fetch messages.
+- **Success:** Chat messages are displayed in chronological order.
+- **Failure:** Access is denied with notification.
+
+#### Update Chat
+- **User actions:** User renames chat or adds/removes participants.
+- **System validations and responses:** Ensure user has manage rights and new participants exist.
+- **Success:** Chat settings updated and participants notified.
+- **Failure:** Operation rejected with error message.
+
+#### Delete Chat
+- **User actions:** User archives or deletes a chat.
+- **System validations and responses:** Confirm authorization and warn about message loss.
+- **Success:** Chat is removed or archived; participants notified.
+- **Failure:** Deletion blocked with explanation.
+
+### Message Lifecycle
+#### Create Message
+- **User actions:** User composes and sends a message within a chat.
+- **System validations and responses:** Verify user is a participant, message is not empty, and attachments are allowed.
+- **Success:** Message is saved and delivered; recipients are notified.
+- **Failure:** Error is shown and message is not sent.
+
+#### Read Message
+- **User actions:** User views messages in an open chat.
+- **System validations and responses:** Confirm membership and mark messages as read.
+- **Success:** Messages are displayed and read receipts updated.
+- **Failure:** Access denied or error shown.
+
+#### Update Message
+- **User actions:** User edits a previously sent message within allowed time.
+- **System validations and responses:** Check that user is the author and within editable timeframe.
+- **Success:** Message content updated with edit indicator.
+- **Failure:** Edit blocked with error message.
+
+#### Delete Message
+- **User actions:** User deletes their own message.
+- **System validations and responses:** Verify author identity and time constraints.
+- **Success:** Message removed or replaced with deletion notice; notification optional.
+- **Failure:** System rejects deletion with explanation.
 
 ## Relations (by user)
 
-# CRUD
+### Create Relation
+- **User actions:** User searches for another user, selects relation type (e.g., friend, colleague), and sends request.
+- **System validations and responses:** Ensure target user exists and relation is not already established.
+- **Success:** Relation is created (or request sent) and both users are notified.
+- **Failure:** Error is displayed if relation already exists or target not found.
+
+### Read Relation
+- **User actions:** User views list of relations or details about a specific relation.
+- **System validations and responses:** Confirm permission to view relation data.
+- **Success:** Relation information is presented.
+- **Failure:** Message shows relation not found or access denied.
+
+### Update Relation
+- **User actions:** User changes relation type or status.
+- **System validations and responses:** Verify user is part of the relation.
+- **Success:** Relation is updated and notifications sent if appropriate.
+- **Failure:** Update is rejected with an error.
+
+### Delete Relation
+- **User actions:** User removes the relation.
+- **System validations and responses:** Confirm the user is part of the relation and no dependent records exist.
+- **Success:** Relation removed and the other user is notified.
+- **Failure:** Deletion fails with an explanatory message.
 
 ### Architecture
 
