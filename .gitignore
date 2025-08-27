@@ -34,3 +34,7 @@ build/
 
 #other
 out/
+
+# Binary artifacts
+backend/gradle/wrapper/gradle-wrapper.jar
+frontend/src/app/favicon.ico
