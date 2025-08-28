@@ -697,6 +697,20 @@ Retention periods will be revisited to ensure alignment with GDPR, CCPA, and sim
 17. Search for existing people and set relations
 18. Real-time chat and notifications via Spring WebSockets with email/polling fallback, 180-day message retention, and moderation tools
 
+## Metrics
+
+1. Total revenue from completed articles.
+2. Outstanding payments past due.
+3. On-time article delivery rate.
+4. Articles completed per month.
+5. Active client count.
+
+## Initial Dashboards and Reports
+
+1. Financial Overview dashboard tracking revenue and overdue payments.
+2. Article Delivery dashboard summarizing status and on-time completion.
+3. Client Activity report highlighting assignments and engagement.
+
 ## Extension Points
 
 The following integrations are planned for future releases:
